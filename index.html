@@ -1,65 +1,106 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>喜欢电脑的猫咪的网站</title>
+     <meta charset="utf-8">
+     <title>喜欢电脑的猫咪的网站</title>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+     <style>
+          body {
+               text-align: center;
+               font-family: 'Noto Sans SC', sans-serif;
+               background-color: #f0f0f0;
+               margin: 0;
+               padding: 0;
+          }
+
+          video {
+               position: fixed;
+               right: 0;
+               bottom: 0;
+               min-width: 100%;
+               min-height: 100%;
+               width: auto;
+               height: auto;
+               z-index: -9999;
+          }
+
+          .center {
+               max-width: 800px;
+               margin: auto;
+               padding: 20px;
+               background-color: white;
+               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+
+          img {
+               border-radius: 10px;
+               transition: transform 0.3s ease;
+          }
+
+          img:hover {
+               transform: scale(1.05);
+          }
+
+          a {
+               color: #007bff;
+               text-decoration: none;
+          }
+
+          a:hover {
+               text-decoration: underline;
+          }
+
+          @media (max-width: 768px) {
+               .center {
+                    margin: 10px;
+                    padding: 10px;
+               }
+          }
+     </style>
 </head>
-<style>
-body {text-align: center;}
-video{
-position: fixed;
-right:0;
-bottom: 0;
-min-width: 100%;
-min-height: 100%;
-width: auto;
-height: auto;
-z-index: -9999;
-}
-</style>
-<div class="center">
-<video id="v1" autoplay muted loop style="width: 100%">
-<source  src="./working~.mp4">
-</video>
-<img src="logo.JPG" width="300" height="200" alt=""/>
-<h1>喜欢电脑的猫咪的网站</h1>
-<p>这里是喜欢电脑的猫咪的网站 欢迎你来浏览！</p>
-<audio controls>
-<source src="bgm.mp3" type="audio/mpeg">
-</audio>
-<br/>
-<h1>关于猫咪</h1>	
-<p>一位普普通通的13岁小孩哥 他为什么喜欢上电脑呢 他也不知道</p>
-<p>记得那年 他得到了一个笔记本电脑 自此 他便开始研究这些</p>
-<br/>
-<h1>联系方式</h1>
-<a href="https://space.bilibili.com/3546576966388461">bilibili</a>
-<a href="https://github.com/xhdndmm">GitHub</a>
-<a href="https://v.douyin.com/i6SBKj6K/">抖音</a>
-<a href="https://www.cnblogs.com/xhdndmm">博客园</a>
-<p>猫咪の邮箱：zhangzx1149@outlook.com</p>
-<h1>素材库</h1>
-<a href="https://www.123pan.com/s/pKUyjv-OPIsA.html">123盘链接</a>
-<h1>Wallpaper Engine壁纸</h1>
-<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3251878182">创意工坊链接</a>
-<h1>SF-LINUX</h1>
-<a href="https://www.123pan.com/s/pKUyjv-S3MsA.html">123盘链接</a>
-<h1>猫咪云计划</h1>
-<p>与抖音@万恶资本家 联动 推出猫咪云计划 QQ群号：983366612</p>
-<h3>猫咪在干嘛呢（狗头）</h3>
-<iframe src="note.txt"> </iframe>
-<br/>
-<h1>赛博书房</h1>
-<a href="./book/index.html">链接</a>
-<h3>您来自：</h3>
-<img src="https://tool.lu/netcard/">
-<br/>
-<a href="https://github.com/xhdndmm/web">网站源码</a>
-<p>此网站使用阿里云服务器ECS 服务器系统使用Ubuntu-Server-20.04-LTS系统 web服务使用apache2 安全和性能由cloudflare提供</p>
-</div>
+
+<body>
+     <div class="center">
+          <video id="v1" autoplay muted loop style="width: 100%">
+          </video>
+          <img src="logo.JPG" width="300" height="200" alt="" />
+          <h1>喜欢电脑的猫咪的网站</h1>
+          <p>这里是喜欢电脑的猫咪的网站 欢迎你来浏览！</p>
+          <audio controls>
+               <source src="bgm.mp3" type="audio/mpeg">
+          </audio>
+          <br />
+          <h1>关于猫咪</h1>
+          <p>一位普普通通的13岁小孩哥 他为什么喜欢上电脑呢 他也不知道</p>
+          <p>记得那年 他得到了一个笔记本电脑 自此 他便开始研究这些</p>
+          <br />
+          <h1>联系方式</h1>
+          <a href="https://space.bilibili.com/3546576966388461">bilibili</a>
+          <a href="https://github.com/xhdndmm">GitHub</a>
+          <a href="https://v.douyin.com/i6SBKj6K/">抖音</a>
+          <a href="https://www.cnblogs.com/xhdndmm">博客园</a>
+          <p>猫咪の邮箱：zhangzx1149@outlook.com</p>
+          <h1>素材库</h1>
+          <a href="https://www.123pan.com/s/pKUyjv-OPIsA.html">123盘链接</a>
+          <h1>Wallpaper Engine壁纸</h1>
+          <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3251878182">创意工坊链接</a>
+          <h1>SF-LINUX</h1>
+          <a href="https://www.123pan.com/s/pKUyjv-S3MsA.html">123盘链接</a>
+          <h1>猫咪云计划</h1>
+          <p>与抖音@万恶资本家 联动 推出猫咪云计划 QQ群号：983366612</p>
+          <h3>猫咪在干嘛呢（狗头）</h3>
+          <iframe src="note.txt"> </iframe>
+          <br />
+          <h3>您来自：</h3>
+          <img src="https://tool.lu/netcard/">
+          <br />
+          <a href="https://github.com/xhdndmm/web">网站源码</a>
+          <p>此网站使用阿里云服务器ECS 服务器系统使用Ubuntu-Server-20.04-LTS系统 web服务使用apache2 安全和性能由cloudflare提供</p>
+     </div>
 </body>
+
 </html>
-<!-- 恭喜你找到了这里 给你一个网址 xhdndmm.haimen.online -->
 <!--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                                                                 #                             #                                                                                                                                    #                                         
                     #        #           ##                     ###                           ##                               ##                            ###                   #                    #                          ##                                        
@@ -92,4 +133,3 @@ z-index: -9999;
                 ###        ##          ###            #####             ##           ##               ##          #         ###############                  ##                    ##                  ##                      ##       ##                                   
                  #                      #             ##                                              ##                                                     #                                                                 ## 
 --> 
-<!--攻击也没事 cloudflare会保护我（狗头）-->
