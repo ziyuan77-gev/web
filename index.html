@@ -60,6 +60,25 @@
      </style>
 </head>
 
+<script type="text/javascript">
+     function show_runtime() {
+         window.setTimeout("show_runtime()", 1000);
+         X = new Date("6/28/2024 20:32:00");
+         Y = new Date();
+         T = (Y.getTime() - X.getTime());
+         M = 24 * 60 * 60 * 1000;
+         a = T / M;
+         A = Math.floor(a);
+         b = (a - A) * 24;
+         B = Math.floor(b);
+         c = (b - B) * 60;
+         C = Math.floor((b - B) * 60);
+         D = Math.floor((c - C) * 60);
+         runtime_span.innerHTML = "网站在各种灾难中运行了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+     }
+     show_runtime();
+ </script>
+ 
 <body>
      <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
      <div class="center">
@@ -96,6 +115,8 @@
           <br />
           <p>建议关闭类似uBlock Origin的广告拦截插件以获得最好体验（不是广告）</p>
           <a href="./log/index.html">网站日志</a> | <a href="http://server.xhdndmm.cn:5244/">猫猫の资源站</a> | <a href="https://github.com/xhdndmm/web">网站源码</a> | <a href="https://xhdndmm.shenlilinghua.com/">猫猫的祭奠网站（悲）</a>
+          <br/>
+          <span id="runtime_span"></span>
      </div>
 </body>
 
