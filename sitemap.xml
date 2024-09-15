@@ -6,18 +6,31 @@
        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
 
+<url>
+ <loc>http://xhdndmm.cn/cdn-cgi/l/email-protection</loc>
+ <priority>0.3</priority>
+ <lastmod>2024-09-15</lastmod>
+ <changefreq>weekly</changefreq>
+</url>
+
+<url>
+ <loc>http://xhdndmm.cn/blog/index.html</loc>
+ <priority>0.3</priority>
+ <lastmod>2024-09-15</lastmod>
+ <changefreq>weekly</changefreq>
+</url>
 
 <url>
  <loc>http://xhdndmm.cn/log/index.html</loc>
  <priority>0.3</priority>
- <lastmod>2024-08-28</lastmod>
+ <lastmod>2024-09-15</lastmod>
  <changefreq>weekly</changefreq>
 </url>
 
 <url>
  <loc>http://xhdndmm.cn</loc>
  <priority>0.3</priority>
- <lastmod>2024-08-28</lastmod>
+ <lastmod>2024-09-15</lastmod>
  <changefreq>weekly</changefreq>
 </url>
 
