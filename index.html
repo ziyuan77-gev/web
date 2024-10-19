@@ -119,17 +119,25 @@
         function show_runtime() {
             setTimeout(show_runtime, 1000);
             var X = new Date("6/28/2024 20:32:00");
-            var Y = new Date();
+            var Y = new Date(); 
             var T = Y.getTime() - X.getTime();
-            var M = 24 * 60 * 60 * 1000;
-            var a = T / M;
-            var A = Math.floor(a);
-            var b = (a - A) * 24;
-            var B = Math.floor(b);
-            var c = (b - B) * 60;
-            var C = Math.floor(c);
-            var D = Math.floor((c - C) * 60);
-            document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + A + "天 " + B + "小时 " + C + "分 " + D + "秒";
+            var M_per_year = 365.25 * 24 * 60 * 60 * 1000; // 考虑闰年
+            var M_per_day = 24 * 60 * 60 * 1000;
+            var a = T / M_per_year;
+            var years = Math.floor(a);
+            var remainingDays = (a - years) * 365.25;
+            var days = Math.floor(remainingDays);
+            var b = (remainingDays - days) * 24;
+            var hours = Math.floor(b);
+            var c = (b - hours) * 60;
+            var minutes = Math.floor(c);
+            var seconds = Math.floor((c - minutes) * 60);
+            document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
+                years + "年 " + 
+                days + "天 " + 
+                hours + "小时 " + 
+                minutes + "分 " + 
+                seconds + "秒";
         }
 
         function setupNavigation() {
