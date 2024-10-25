@@ -117,29 +117,41 @@
     <script src="./data/aos.js"></script>
     <!--源码链接https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js-->
     <script type="text/javascript">
-        function show_runtime() {
-            //由于不想做后端（没钱买云服务器）所以所需的时间数据是读取客户端时间而并非NTP服务器时间
+                async function show_runtime() {
             setTimeout(show_runtime, 1000);
-            var X = new Date("6/28/2024 20:32:00");
-            var Y = new Date(); 
-            var T = Y.getTime() - X.getTime();
-            var M_per_year = 365.25 * 24 * 60 * 60 * 1000;
-            var M_per_day = 24 * 60 * 60 * 1000;
-            var a = T / M_per_year;
-            var years = Math.floor(a);
-            var remainingDays = (a - years) * 365.25;
-            var days = Math.floor(remainingDays);
-            var b = (remainingDays - days) * 24;
-            var hours = Math.floor(b);
-            var c = (b - hours) * 60;
-            var minutes = Math.floor(c);
-            var seconds = Math.floor((c - minutes) * 60);
-            document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
-                years + "年 " + 
-                days + "天 " + 
-                hours + "小时 " + 
-                minutes + "分 " + 
-                seconds + "秒";
+            try {
+                const response = await fetch('/time_api');
+                const data = await response.json();
+
+                if (data.ntp_time) {
+                    const X = new Date(data.ntp_time);
+                    const Y = new Date(); 
+                    const T = Y.getTime() - X.getTime();
+                    const M_per_year = 365.25 * 24 * 60 * 60 * 1000;
+                    const M_per_day = 24 * 60 * 60 * 1000;
+
+                    const a = T / M_per_year;
+                    const years = Math.floor(a);
+                    const remainingDays = (a - years) * 365.25;
+                    const days = Math.floor(remainingDays);
+                    const b = (remainingDays - days) * 24;
+                    const hours = Math.floor(b);
+                    const c = (b - hours) * 60;
+                    const minutes = Math.floor(c);
+                    const seconds = Math.floor((c - minutes) * 60);
+
+                    document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
+                        years + "年 " + 
+                        days + "天 " + 
+                        hours + "小时 " + 
+                        minutes + "分 " + 
+                        seconds + "秒";
+                } else {
+                    console.error(data.error);
+                }
+            } catch (error) {
+                console.error('请求失败:', error);
+            }
         }
 
         function setupNavigation() {
