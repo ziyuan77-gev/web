@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 import ntplib
-from time import ctime
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def get_ntp_time():
     try:
         client = ntplib.NTPClient()
         response = client.request('pool.ntp.org')
-        current_time = ctime(response.tx_time)
+        current_time = datetime.now().isoformat()
         return jsonify({"time_api": current_time})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
