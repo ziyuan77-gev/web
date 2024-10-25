@@ -117,19 +117,19 @@
     <script src="./data/aos.js"></script>
     <!--源码链接https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js-->
     <script type="text/javascript">
-            async function show_runtime() {
+        async function show_runtime() {
     setTimeout(show_runtime, 1000);
 
     try {
         const response = await fetch('/time_api');
         const data = await response.json();
+        console.log("Fetched data:", data);
 
         if (data.ntp_time) {
             const startDate = new Date(data.ntp_time);  
             const currentDate = new Date();
 
             const timeDiff = currentDate - startDate;
-            
             const msPerSecond = 1000;
             const msPerMinute = msPerSecond * 60;
             const msPerHour = msPerMinute * 60;
@@ -149,12 +149,13 @@
                 minutes + "分 " + 
                 seconds + "秒";
         } else {
-            console.error("Error:", data.error);
+            console.error("No ntp_time in response:", data);
         }
     } catch (error) {
         console.error('请求失败:', error);
     }
 }
+
 
         function setupNavigation() {
             document.querySelectorAll('nav a').forEach(anchor => {
