@@ -125,8 +125,8 @@
         const data = await response.json();
         console.log("Fetched data:", data);
 
-        if (data.ntp_time) {
-            const startDate = new Date(data.ntp_time);  
+        if (data.time_api) { 
+            const startDate = new Date(data.time_api)  
             const currentDate = new Date();
 
             const timeDiff = currentDate - startDate;
