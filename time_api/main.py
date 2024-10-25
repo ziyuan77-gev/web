@@ -1,3 +1,4 @@
+#python3.12.7
 from flask import Flask, jsonify
 import ntplib
 from datetime import datetime, timezone, timedelta
@@ -8,7 +9,7 @@ app = Flask(__name__)
 def get_ntp_time():
     try:
         client = ntplib.NTPClient()
-        response = client.request('ntp.ntsc.ac.cn')
+        response = client.request('time.windows.com')
         
         ntp_time = datetime.fromtimestamp(response.tx_time, tz=timezone.utc)
         
