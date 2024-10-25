@@ -117,44 +117,45 @@
     <script src="./data/aos.js"></script>
     <!--源码链接https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js-->
     <script type="text/javascript">
+        //服了 这前端改了几万遍了 老有问题
         async function show_runtime() {
-    setTimeout(show_runtime, 1000);
+            setTimeout(show_runtime, 1000);
 
-    try {
-        const response = await fetch('/time_api');
-        const data = await response.json();
-        console.log("Fetched data:", data);
+            try {
+                const response = await fetch('/time_api');
+                const data = await response.json();
+                console.log("Fetched data:", data);
 
-        if (data.time_api) { 
-            const startDate = new Date("2024-06-28T20:32:00+08:00");
-            const currentDate = new Date(data.time_api);
+                if (data.time_api) { 
+                    const startDate = new Date("2024-06-28T12:32:00Z"); //为了同步时间 把网站开始运行时间改为UTC
+                    const ntpDate = new Date(data.time_api);
 
-            const timeDiff = currentDate - startDate;
-            const msPerSecond = 1000;
-            const msPerMinute = msPerSecond * 60;
-            const msPerHour = msPerMinute * 60;
-            const msPerDay = msPerHour * 24;
-            const msPerYear = msPerDay * 365.25;
+                    const timeDiff = ntpDate - startDate;
+                    const msPerSecond = 1000;
+                    const msPerMinute = msPerSecond * 60;
+                    const msPerHour = msPerMinute * 60;
+                    const msPerDay = msPerHour * 24;
+                    const msPerYear = msPerDay * 365.25;
 
-            const years = Math.floor(timeDiff / msPerYear);
-            const days = Math.floor((timeDiff % msPerYear) / msPerDay);
-            const hours = Math.floor((timeDiff % msPerDay) / msPerHour);
-            const minutes = Math.floor((timeDiff % msPerHour) / msPerMinute);
-            const seconds = Math.floor((timeDiff % msPerMinute) / msPerSecond);
+                    const years = Math.floor(timeDiff / msPerYear);
+                    const days = Math.floor((timeDiff % msPerYear) / msPerDay);
+                    const hours = Math.floor((timeDiff % msPerDay) / msPerHour);
+                    const minutes = Math.floor((timeDiff % msPerHour) / msPerMinute);
+                    const seconds = Math.floor((timeDiff % msPerMinute) / msPerSecond);
 
-            document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
-                years + "年 " + 
-                days + "天 " + 
-                hours + "小时 " + 
-                minutes + "分 " + 
-                seconds + "秒";
-        } else {
-            console.error("No time_api in response:", data);
+                    document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
+                        years + "年 " + 
+                        days + "天 " + 
+                        hours + "小时 " + 
+                        minutes + "分 " + 
+                        seconds + "秒";
+                } else {
+                    console.error("No time_api in response:", data);
+                }
+            } catch (error) {
+                console.error('请求失败:', error);
+            }
         }
-    } catch (error) {
-        console.error('请求失败:', error);
-    }
-}
 
 
         function setupNavigation() {

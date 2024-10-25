@@ -1,7 +1,7 @@
 #python3.12.7
 from flask import Flask, jsonify
 import ntplib
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 
 app = Flask(__name__)
 
@@ -13,11 +13,7 @@ def get_ntp_time():
         
         ntp_time = datetime.fromtimestamp(response.tx_time, tz=timezone.utc)
         
-        cst_time = ntp_time + timedelta(hours=8)
-        
-        cst_time_iso = cst_time.isoformat()
-
-        return jsonify({"time_api": cst_time_iso})
+        return jsonify({"time_api": ntp_time.isoformat()})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
