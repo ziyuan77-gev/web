@@ -117,42 +117,44 @@
     <script src="./data/aos.js"></script>
     <!--源码链接https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js-->
     <script type="text/javascript">
-                async function show_runtime() {
-            setTimeout(show_runtime, 1000);
-            try {
-                const response = await fetch('/time_api');
-                const data = await response.json();
+            async function show_runtime() {
+    setTimeout(show_runtime, 1000);
 
-                if (data.ntp_time) {
-                    const X = new Date(data.ntp_time);
-                    const Y = new Date(); 
-                    const T = Y.getTime() - X.getTime();
-                    const M_per_year = 365.25 * 24 * 60 * 60 * 1000;
-                    const M_per_day = 24 * 60 * 60 * 1000;
+    try {
+        const response = await fetch('/time_api');
+        const data = await response.json();
 
-                    const a = T / M_per_year;
-                    const years = Math.floor(a);
-                    const remainingDays = (a - years) * 365.25;
-                    const days = Math.floor(remainingDays);
-                    const b = (remainingDays - days) * 24;
-                    const hours = Math.floor(b);
-                    const c = (b - hours) * 60;
-                    const minutes = Math.floor(c);
-                    const seconds = Math.floor((c - minutes) * 60);
+        if (data.ntp_time) {
+            const startDate = new Date(data.ntp_time);  
+            const currentDate = new Date();
 
-                    document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
-                        years + "年 " + 
-                        days + "天 " + 
-                        hours + "小时 " + 
-                        minutes + "分 " + 
-                        seconds + "秒";
-                } else {
-                    console.error(data.error);
-                }
-            } catch (error) {
-                console.error('请求失败:', error);
-            }
+            const timeDiff = currentDate - startDate;
+            
+            const msPerSecond = 1000;
+            const msPerMinute = msPerSecond * 60;
+            const msPerHour = msPerMinute * 60;
+            const msPerDay = msPerHour * 24;
+            const msPerYear = msPerDay * 365.25;
+
+            const years = Math.floor(timeDiff / msPerYear);
+            const days = Math.floor((timeDiff % msPerYear) / msPerDay);
+            const hours = Math.floor((timeDiff % msPerDay) / msPerHour);
+            const minutes = Math.floor((timeDiff % msPerHour) / msPerMinute);
+            const seconds = Math.floor((timeDiff % msPerMinute) / msPerSecond);
+
+            document.getElementById('runtime_span').innerHTML = "网站在各种灾难中运行了: " + 
+                years + "年 " + 
+                days + "天 " + 
+                hours + "小时 " + 
+                minutes + "分 " + 
+                seconds + "秒";
+        } else {
+            console.error("Error:", data.error);
         }
+    } catch (error) {
+        console.error('请求失败:', error);
+    }
+}
 
         function setupNavigation() {
             document.querySelectorAll('nav a').forEach(anchor => {

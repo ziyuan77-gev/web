@@ -4,13 +4,13 @@ from time import ctime
 
 app = Flask(__name__)
 
-@app.route('/ntp-time', methods=['GET'])
+@app.route('/time_api', methods=['GET'])
 def get_ntp_time():
     try:
         client = ntplib.NTPClient()
-        response = client.request('ntp.aliyun.com ')
+        response = client.request('pool.ntp.org')
         current_time = ctime(response.tx_time)
-        return jsonify({"ntp_time": current_time})
+        return jsonify({"time_api": current_time})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
