@@ -8,7 +8,7 @@ app = Flask(__name__)
 def get_ntp_time():
     try:
         client = ntplib.NTPClient()
-        response = client.request('pool.ntp.org')
+        response = client.request('ntp.ntsc.ac.cn')
         
         ntp_time = datetime.fromtimestamp(response.tx_time, tz=timezone.utc)
         
