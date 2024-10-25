@@ -126,8 +126,8 @@
         console.log("Fetched data:", data);
 
         if (data.time_api) { 
-            const startDate = new Date(data.time_api)  
-            const currentDate = new Date();
+            const startDate = new Date("2024-06-28T20:32:00+08:00");
+            const currentDate = new Date(data.time_api);
 
             const timeDiff = currentDate - startDate;
             const msPerSecond = 1000;
@@ -149,7 +149,7 @@
                 minutes + "分 " + 
                 seconds + "秒";
         } else {
-            console.error("No ntp_time in response:", data);
+            console.error("No time_api in response:", data);
         }
     } catch (error) {
         console.error('请求失败:', error);
