@@ -157,15 +157,15 @@
             }
         }
 
-        async function time() {
-            setTimeout(time, 1000);
+            async function time() {
             try {
                 const response = await fetch('/time_api');
                 const data = await response.json();
                 console.log("Fetched data:", data);
-                if (data.time_api) { 
+                
+                if (data.time_api) {
                     const ntpDate = new Date(data.time_api);
-                    document.getElementById('time').innerHTML = "当前时间" + Date
+                    document.getElementById('time').innerHTML = "当前时间: " + ntpDate.toLocaleString();
                 } else {
                     console.error("No time_api in response:", data);
                 }
