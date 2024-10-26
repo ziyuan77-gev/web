@@ -1,6 +1,6 @@
 <!--由 ChatGPT 辅助制作-->
 <!--源码仓库：https://github.com/xhdndmm/web/ 使用此代码的网站：https://xhdndmm.cn/ -->
-<!--最后更新时间：2024.10.26 22:18 CST--> 
+<!--最后更新时间：2024.10.27 7:08 CST--> 
 <!--为了提高网站性能 将原来引用的代码保存到了网站的data目录-->
 <!doctype html>
 <html>
@@ -157,6 +157,22 @@
             }
         }
 
+        async function time() {
+            setTimeout(time, 1000);
+            try {
+                const response = await fetch('/time_api');
+                const data = await response.json();
+                console.log("Fetched data:", data);
+                if (data.time_api) { 
+                    const ntpDate = new Date(data.time_api);
+                    document.getElementById('time').innerHTML = "当前时间" + Date
+                } else {
+                    console.error("No time_api in response:", data);
+                }
+            } catch (error) {
+                console.error('请求失败:', error);
+            }
+        }
 
         function setupNavigation() {
             document.querySelectorAll('nav a').forEach(anchor => {
@@ -197,7 +213,8 @@
         <a href="#contact">联系方式</a> |
         <a href="#resources">素材库</a> |
         <a href="#projects">项目</a> |
-        <a href="#log">日常</a>
+        <a href="#log">日常</a>|
+        <span id="time"></span>
     </nav>
 
     <div class="center">
@@ -215,7 +232,8 @@
             <span id="runtime_span"></span>
             <br/>
             此网站由<a href="https://www.aliyun.com/">阿里云</a>和<a href="https://www.cloudflare.com/">Cloudflare</a>驱动
-            <a href="http://server_info.xhdndmm.cn:8008">猫猫の探针</a> | <a href="http://server.xhdndmm.cn:5244">资源站</a>
+            <br/>
+            <a href="http://server_info.xhdndmm.cn/">猫猫の探针</a> | <a href="http://server.xhdndmm.cn:5244">资源站</a>
         </div>
 
         <div id="contact" class="section" data-aos="fade-up">
