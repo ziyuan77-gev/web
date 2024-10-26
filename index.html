@@ -158,20 +158,21 @@
         }
 
         async function time() {
-        try {
-            const response = await fetch('/time_api');
-            const data = await response.json();
-            console.log("Fetched data:", data);
-            
-            if (data.time_api) {
-                const ntpDate = new Date(data.time_api);
-                document.getElementById('time').innerHTML = "当前时间: " + ntpDate.toLocaleString();
-            } else {
-                console.error("No time_api in response:", data);
+            try {
+                const response = await fetch('/time_api');
+                const data = await response.json();
+                console.log("Fetched data:", data);
+                
+                if (data.time_api) {
+                    const ntpDate = new Date(data.time_api);
+                    document.getElementById('time').innerHTML = "当前时间: " + ntpDate.toLocaleString();
+                } else {
+                    console.error("No time_api in response:", data);
+                }
+            } 
+            catch (error) {
+                console.error('请求失败:', error);
             }
-        } catch (error) {
-            console.error('请求失败:', error);
-        }
         }
 
         function setupNavigation() {
