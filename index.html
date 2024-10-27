@@ -1,6 +1,6 @@
 <!--由 ChatGPT 辅助制作-->
 <!--源码仓库：https://github.com/xhdndmm/web/ 使用此代码的网站：https://xhdndmm.cn/ -->
-<!--最后更新时间：2024.10.27 7:26 CST--> 
+<!--最后更新时间：2024.10.27 9:10 CST--> 
 <!--为了提高网站性能 将原来引用的代码保存到了网站的data目录-->
 <!doctype html>
 <html>
@@ -149,6 +149,9 @@
                         hours + "小时 " + 
                         minutes + "分 " + 
                         seconds + "秒";
+
+                    document.getElementById('current_time_span').innerHTML = 
+                    "当前时间：" + ntpDate.toLocaleString('zh-CN', { hour12: false });
                 } else {
                     console.error("No time_api in response:", data);
                 }
@@ -197,6 +200,7 @@
         <a href="#resources">素材库</a> |
         <a href="#projects">项目</a> |
         <a href="#log">日常</a>
+        <span id="current_time_span"></span> 
     </nav>
 
     <div class="center">
