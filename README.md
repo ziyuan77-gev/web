@@ -1,17 +1,17 @@
 # 这里是xhdndmm.cn的源代码 以下内容为介绍部分
 ## 网站部署方法
 **注：以ubuntu_20.04系统为例**
-所需依赖安装
+### 先安装所需依赖
 ```
 sudo apt update
-sudo apt install python3-pip gunicorn 
+sudo apt install python3-pip gunicorn git nginx
 pip install Flask
 pip install ntplib
 pip install datetime
 pip install gunicorn 
 ```
 ### WEB服务器
-可以使用nginx作为web服务器 配置文件如下
+使用nginx作为web服务器 配置文件如下
 ```
 user www-data;
 worker_processes auto;
