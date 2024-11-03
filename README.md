@@ -1,6 +1,15 @@
 # 这里是xhdndmm.cn的源代码 以下内容为介绍部分
-## 网站后端如何部署
+## 网站部署方法
 **注：以ubuntu_20.04系统为例**
+所需依赖安装
+```
+sudo apt update
+sudo apt install python3-pip gunicorn 
+pip install Flask
+pip install ntplib
+pip install datetime
+pip install gunicorn 
+```
 ### WEB服务器
 可以使用nginx作为web服务器 配置文件如下
 ```
@@ -42,16 +51,13 @@ http {
     }
 }
 ```
+## 前端部署方法
+首先克隆存储库
+```
+git clone https://github.com/xhdndmm/web.git
+```
+然后修改nginx配置文件（替换括号部分）即可
 ### 后端启用方法
-安装依赖
-```
-sudo apt update
-sudo apt install python3-pip gunicorn 
-pip install Flask
-pip install ntplib
-pip install datetime
-pip install gunicorn 
-```
 进入网站根目录/time_api并运行以下命令
 ```
 gunicorn --bind 0.0.0.0:5000 main:app --daemon
