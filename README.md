@@ -4,14 +4,14 @@
 所需依赖安装
 ```
 sudo apt update
-sudo apt install python3-pip gunicorn 
+sudo apt install python3-pip gunicorn git nginx
 pip install Flask
 pip install ntplib
 pip install datetime
 pip install gunicorn 
 ```
 ### WEB服务器
-可以使用nginx作为web服务器 配置文件如下
+使用nginx作为web服务器 配置文件如下
 ```
 user www-data;
 worker_processes auto;
