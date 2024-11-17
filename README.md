@@ -10,12 +10,12 @@ pip install ntplib
 pip install datetime
 pip install gunicorn 
 ```
-## 前端部分
+## 部署网站
 首先克隆存储库
 ```
 git clone https://github.com/xhdndmm/web.git
 ```
-然后修改nginx配置文件（替换括号部分）即可
+然后修改nginx配置文件（替换括号部分）
 ```
 user www-data;
 worker_processes auto;
@@ -55,7 +55,6 @@ http {
     }
 }
 ```
-### 后端部分
 进入网站根目录/time_api并运行以下命令
 ```
 gunicorn --bind 0.0.0.0:5000 main:app --daemon
