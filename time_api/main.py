@@ -1,4 +1,4 @@
-#python3.12.7
+#python3.X
 from flask import Flask, jsonify
 import ntplib
 from datetime import datetime, timezone
@@ -18,4 +18,4 @@ def get_ntp_time():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000)
+    app.run(host='127.0.0.1', port=5000, threaded=True)
