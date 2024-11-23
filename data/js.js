@@ -62,10 +62,6 @@ window.onload = function() {
         center.classList.add('loaded');
     }, 100);
 
-    AOS.init({
-        duration: 1000,
-        once: true,
-    });
 }
 
 let animationFrameId;
@@ -130,11 +126,6 @@ window.onload = function () {
     setTimeout(() => {
         center.classList.add('loaded');
     }, 100);
-
-    AOS.init({
-        duration: 1000,
-        once: true,
-    });
 
     startMatrixRain();
 };
