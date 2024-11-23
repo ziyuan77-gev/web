@@ -29,11 +29,6 @@ async function show_runtime() {
                 hours + "小时 " + 
                 minutes + "分 " + 
                 seconds + "秒";
-
-            document.getElementById('current_time_span').innerHTML = 
-            "当前时间：" + ntpDate.toLocaleString('zh-CN', { hour12: false });
-        } else {
-            console.error("No time_api in response:", data);
         }
     } catch (error) {
         console.error('请求失败:', error);
