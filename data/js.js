@@ -62,70 +62,66 @@ window.onload = function() {
         center.classList.add('loaded');
     }, 100);
 
-}
-
-let animationFrameId;
-
-function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = 'lime';
-    ctx.font = `${fontSize}px monospace`;
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = charArray[Math.floor(Math.random() * charArray.length)];
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
-
-        ctx.fillText(text, x, y);
-
-        if (y > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-        }
-
-        drops[i]++;
+    var  canvas = document.getElementById("canvas");
+    var  context = canvas.getContext("2d");
+    var  W = window.innerWidth;
+    var  H = window.innerHeight;
+    canvas.width  = W;
+    canvas.height  = H;
+    var  fontSize = 15;
+    var  colunms = Math.floor(W /fontSize);  
+    var  drops = [];
+    for(var  i=0;i<colunms;i++){
+           drops.push(0);
     }
 
-    animationFrameId = requestAnimationFrame(draw);
-}
+    var  str ="0123456789qwertyuiopasdfghjklzxcvbnm";
 
-function startMatrixRain() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    drops.length = Math.floor(canvas.width / fontSize);
-    drops.fill(0);
-    animationFrameId = requestAnimationFrame(draw);
-}
+    function  draw(){
 
-function stopMatrixRain() {
-    cancelAnimationFrame(animationFrameId);
-}
+           context.fillStyle  = "rgba(0,0,0,0.05)";
 
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        stopMatrixRain();
-    } else {
-        startMatrixRain();
+           context.fillRect(0,0,W,H);
+
+           context.font  = fontSize + 'px arial';
+
+           context.fillStyle  ="green";
+
+           for(var  i=0;i<colunms;i++){
+
+                  var  index = Math.floor(Math.random() * str.length);
+
+                  var  x = i*fontSize;
+
+                  var  y = drops[i] *fontSize;
+
+                  context.fillText(str[index],x,y);
+
+                  if(y  >= canvas.height && Math.random() > 0.92){
+
+                         drops[i]  = 0;
+
+                  }
+
+                  drops[i]++;
+
+           }
+
+    };
+
+    function  randColor(){
+
+           var  r = Math.floor(Math.random() * 256);
+
+           var  g = Math.floor(Math.random() * 256);
+
+           var  b = Math.floor(Math.random() * 256);
+
+           return  "rgb("+r+","+g+","+b+")";
+
     }
-});
 
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    drops.length = Math.floor(canvas.width / fontSize);
-    drops.fill(0);
-});
+    draw();
 
-window.onload = function () {
-    show_runtime();
-    setupNavigation();
-    document.querySelector('.section').classList.add('active');
-
-    const center = document.querySelector('.center');
-    setTimeout(() => {
-        center.classList.add('loaded');
-    }, 100);
-
-    startMatrixRain();
-};
+    setInterval(draw,30);
+}
