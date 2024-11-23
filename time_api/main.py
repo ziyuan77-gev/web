@@ -1,3 +1,4 @@
+#这里是[https://xhdndmm.cn/]的python后端部分
 #python3.X
 from flask import Flask, jsonify
 import ntplib
