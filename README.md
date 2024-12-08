@@ -1,7 +1,9 @@
 # 这里是xhdndmm.cn的源代码 以下内容为介绍部分
+## 声明
+**如果你想使用本仓库代码作为你的个人博客 请删去关于我的所有内容 谢谢**
 ## 网站部署方法
 **注：以ubuntu_20.04系统为例**
-### 先安装所需依赖
+### 安装依赖
 ```
 sudo apt update
 sudo apt install python3-pip gunicorn git nginx
@@ -10,7 +12,7 @@ pip install ntplib
 pip install datetime
 pip install gunicorn 
 ```
-## 部署网站
+### 部署
 首先克隆存储库
 ```
 git clone https://github.com/xhdndmm/web.git
@@ -59,5 +61,3 @@ http {
 ```
 gunicorn --bind 0.0.0.0:5000 main:app --daemon
 ```
-## 声明
-**如果你想使用本仓库代码作为你的个人博客 请删去关于我的所有内容 谢谢**
