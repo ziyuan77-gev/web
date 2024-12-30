@@ -1,5 +1,5 @@
-//这里是[https://xhdndmm.cn/]的JavaScript部分
-//东西太多就不写注释了
+//[https://github.com/xhdndmm/web]
+//[https://xhdndmm.cn/]
 async function show_runtime() {
     setTimeout(show_runtime, 1000);
 

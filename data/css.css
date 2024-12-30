@@ -1,5 +1,8 @@
-/*这里是[https://xhdndmm.cn]的CSS部分*/
-/*东西太多就不写注释了*/
+/*
+[https://github.com/xhdndmm/web]
+[https://xhdndmm.cn/]
+*/
+
 html {
     scroll-behavior: smooth;
 }
@@ -69,7 +72,7 @@ nav a:hover {
 }
 
 img {
-    border-radius: 10px;
+    border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
