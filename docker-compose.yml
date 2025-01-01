@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./data:/usr/share/nginx/html/data
+    depends_on:
+      - time-api
+
+  time-api:
+    build: ./time_api
+    ports:
+      - "5000:5000"
+    restart: always 
